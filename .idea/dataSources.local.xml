@@ -19,5 +19,14 @@
       <user-name>hzbykshwxdkbpy</user-name>
       <introspection-schemas>dd6l7ok5ete1ft:public</introspection-schemas>
     </data-source>
+    <data-source name="d7mbmh0uc5ugj4@ec2-50-19-249-121.compute-1.amazonaws.com" uuid="1054b71c-f55e-45d6-b26b-74a8897990cb">
+      <database-info product="PostgreSQL" version="10.6 (Ubuntu 10.6-1.pgdg14.04+1)" jdbc-version="4.2" driver-name="PostgreSQL JDBC Driver" driver-version="42.2.2">
+        <identifier-quote-string>&quot;</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="exact" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>rjgzravucbcaed</user-name>
+      <introspection-schemas>d7mbmh0uc5ugj4:public</introspection-schemas>
+    </data-source>
   </component>
 </project>

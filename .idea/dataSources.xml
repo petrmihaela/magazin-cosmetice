@@ -21,5 +21,16 @@
         <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
       </driver-properties>
     </data-source>
+    <data-source source="LOCAL" name="d7mbmh0uc5ugj4@ec2-50-19-249-121.compute-1.amazonaws.com" uuid="1054b71c-f55e-45d6-b26b-74a8897990cb">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-50-19-249-121.compute-1.amazonaws.com:5432/d7mbmh0uc5ugj4</jdbc-url>
+      <driver-properties>
+        <property name="ApplicationName" value="DataGrip" />
+        <property name="ssl" value="true" />
+        <property name="sslfactory" value="org.postgresql.ssl.NonValidatingFactory" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>
