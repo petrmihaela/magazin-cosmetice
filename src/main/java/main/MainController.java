@@ -1,13 +1,12 @@
 package main;
 
-import data_layer.dto.MovieUpdateDTO;
-import data_layer.models.Movie;
-import data_layer.services.MovieService;
+import data_layer.models.Produs;
+import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -15,17 +14,17 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    MovieService movieService;
+    ProdusService productService;
 
-    @RequestMapping("/movies")
+    @RequestMapping("/products")
     @ResponseBody
-    public List<Movie> getAllMovies() {
+    public List<Produs> getAllProducts() {
 
-        List<Movie> movies = movieService.getAllMovies();
-        return movies;
+        List<Produs> products =productService.getAllProducts();
+        return products;
 
     }
-
+/*
     @RequestMapping(value = "/movies/withTitle", method = RequestMethod.GET)
     @ResponseBody
     public Movie getMovieWithTitle(@RequestParam(name = "title") String t) {
@@ -55,7 +54,7 @@ public class MainController {
     public void updateMovie(@RequestBody MovieUpdateDTO movie) {
         movieService.updateMovie(movie);
     }
-
+*/
     @RequestMapping(value = "/")
     @ResponseBody
     public String index() {
