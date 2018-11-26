@@ -16,4 +16,9 @@ public class ProdusService {
     public List<Produs> getAllProducts() {
         return produsRepository.findAll();
     }
+
+    public List<Produs> getTypeProducts(String n){
+
+        return produsRepository.findByNumeContainingIgnoreCase(n);
+    }
 }

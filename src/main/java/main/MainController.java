@@ -3,9 +3,7 @@ package main;
 import data_layer.models.Produs;
 import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,16 +22,16 @@ public class MainController {
         return products;
 
     }
-/*
-    @RequestMapping(value = "/movies/withTitle", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/products/category", method = RequestMethod.GET)
     @ResponseBody
-    public Movie getMovieWithTitle(@RequestParam(name = "title") String t) {
+    public List<Produs> getTypeProducts(@RequestParam(name = "nume") String nume) {
 
-        Movie m = movieService.findMovieWithTitle(t);
-        return m;
-
+        List<Produs> p;
+            p=productService.getTypeProducts(nume);
+        return p;
     }
-
+/*
     @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
     @ResponseBody
     public void set(@RequestBody Movie movie) {
