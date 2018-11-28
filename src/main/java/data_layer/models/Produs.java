@@ -34,4 +34,20 @@ public class Produs {
                 "Produs[id=%d, nume='%s', pret='%s', descriere='%s']",
                 id, nume, pret, descriere);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public int getPret() {
+        return pret;
+    }
+
+    public String getDescriere() {
+        return descriere;
+    }
 }
