@@ -24,9 +24,23 @@ public class ProdusService {
         return produsRepository.findAll();
     }
 
-    public List<Produs> getTypeProducts(String n) {
+    public List<ProductDto> fromProdusToDto(List<Produs> old) {
 
-        return produsRepository.findByNumeContainingIgnoreCase(n);
+        List<ProductDto> produseDto = new ArrayList<>();
+
+        for (Produs p : old) {
+            List<String> urls = imagineRepository.getUrlForProduct(p.getId());
+            ProductDto produsDto = new ProductDto(p.getId(), p.getNume(), p.getPret(), p.getDescriere(), urls);
+            produseDto.add(produsDto);
+        }
+        return produseDto;
+
+    }
+
+    public List<ProductDto> getTypeProducts(String n) {
+
+        List<Produs> produse = produsRepository.findByNumeContainingIgnoreCase(n);
+        return fromProdusToDto(produse);
     }
 
     public List<ProductDto> getProductImages() {
@@ -34,11 +48,7 @@ public class ProdusService {
         List<Produs> produse = produsRepository.findAll();
         List<ProductDto> produseDto = new ArrayList<>();
 
-        for (Produs p : produse) {
-            List<String> urls = imagineRepository.getUrlForProduct(p.getId());
-            ProductDto produsDto = new ProductDto(p.getId(), p.getNume(), p.getPret(), p.getDescriere(), urls);
-            produseDto.add(produsDto);
-        }
+        produseDto = fromProdusToDto(produse);
         return produseDto;
     }
 }

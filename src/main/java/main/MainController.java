@@ -28,20 +28,15 @@ public class MainController {
 
     @RequestMapping(value = "/products/category", method = RequestMethod.GET)
     @ResponseBody
-    public List<Produs> getTypeProducts(@RequestParam(name = "nume") String nume) {
+    public List<ProductDto> getTypeProducts(@RequestParam(name = "nume") String nume) {
 
-        List<Produs> p = new ArrayList<>();
-        p = productService.getTypeProducts(nume);
-        return p;
+        return productService.getTypeProducts(nume);
     }
 
     @RequestMapping(value = "/products", method = RequestMethod.GET)
     @ResponseBody
     public List<ProductDto> getProductImages() {
-
-        List<ProductDto> i;
-        i = productService.getProductImages();
-        return i;
+        return productService.getProductImages();
     }
 
     /*
