@@ -17,14 +17,14 @@ public class MainController {
     @Autowired
     ProdusService productService;
 
-    @RequestMapping("/products")
+   /* @RequestMapping("/products")
     @ResponseBody
     public List<Produs> getAllProducts() {
 
         List<Produs> products = productService.getAllProducts();
         return products;
 
-    }
+    }*/
 
     @RequestMapping(value = "/products/category", method = RequestMethod.GET)
     @ResponseBody
@@ -35,7 +35,7 @@ public class MainController {
         return p;
     }
 
-    @RequestMapping(value = "/productsDto", method = RequestMethod.GET)
+    @RequestMapping(value = "/products", method = RequestMethod.GET)
     @ResponseBody
     public List<ProductDto> getProductImages() {
 

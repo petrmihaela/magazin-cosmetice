@@ -3,6 +3,7 @@ package data_layer.services;
 import data_layer.dto.ProductDto;
 import data_layer.models.Imagine;
 import data_layer.models.Produs;
+import data_layer.repositories.ImagineRepository;
 import data_layer.repositories.ProdusRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,9 @@ public class ProdusService {
     @Autowired
     ProdusRepository produsRepository;
 
+    @Autowired
+    ImagineRepository imagineRepository;
+
     public List<Produs> getAllProducts() {
         return produsRepository.findAll();
     }
@@ -27,11 +31,11 @@ public class ProdusService {
 
     public List<ProductDto> getProductImages() {
 
-        List<Produs> produse = produsRepository.getAllProdus();
+        List<Produs> produse = produsRepository.findAll();
         List<ProductDto> produseDto = new ArrayList<>();
 
         for (Produs p : produse) {
-            List<String> urls = produsRepository.getUrlForProduct(p.getId());
+            List<String> urls = imagineRepository.getUrlForProduct(p.getId());
             ProductDto produsDto = new ProductDto(p.getId(), p.getNume(), p.getPret(), p.getDescriere(), urls);
             produseDto.add(produsDto);
         }
