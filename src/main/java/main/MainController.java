@@ -1,8 +1,10 @@
 package main;
 
 import data_layer.dto.ProductDto;
+import data_layer.models.Customer;
 import data_layer.models.Imagine;
 import data_layer.models.Produs;
+import data_layer.services.ClientService;
 import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ public class MainController {
     @Autowired
     ProdusService productService;
 
+    @Autowired
+    ClientService clientService;
    /* @RequestMapping("/products")
     @ResponseBody
     public List<Produs> getAllProducts() {
@@ -39,6 +43,12 @@ public class MainController {
         return productService.getProductImages();
     }
 
+    @RequestMapping(value = "/client/addClient", method = RequestMethod.POST)
+    @ResponseBody
+    public void set(@RequestBody Customer customer) {
+
+        clientService.saveClient(customer);
+    }
     /*
         @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
         @ResponseBody
