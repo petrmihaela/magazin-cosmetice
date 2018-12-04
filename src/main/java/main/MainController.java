@@ -2,6 +2,7 @@ package main;
 
 import data_layer.dto.ClientDto;
 import data_layer.dto.ProductDto;
+import data_layer.exceptions.NotFoundException;
 import data_layer.models.Customer;
 import data_layer.models.Imagine;
 import data_layer.models.Produs;
@@ -51,9 +52,9 @@ public class MainController {
         clientService.saveClient(customer);
     }
 
-    @RequestMapping(value = "/clients/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/clients/login", method = RequestMethod.POST)
     @ResponseBody
-    public Customer getClient(@RequestBody ClientDto customer) {
+    public Customer getClient(@RequestBody ClientDto customer) throws NotFoundException {
 
         return clientService.getClient(customer);
     }
