@@ -1,5 +1,6 @@
 package main;
 
+import data_layer.dto.ClientDto;
 import data_layer.dto.ProductDto;
 import data_layer.models.Customer;
 import data_layer.models.Imagine;
@@ -43,11 +44,18 @@ public class MainController {
         return productService.getProductImages();
     }
 
-    @RequestMapping(value = "/client/addClient", method = RequestMethod.POST)
+    @RequestMapping(value = "/clients/addClient", method = RequestMethod.POST)
     @ResponseBody
-    public void set(@RequestBody Customer customer) {
+    public void registerCustomer(@RequestBody Customer customer) {
 
         clientService.saveClient(customer);
+    }
+
+    @RequestMapping(value = "/clients/login", method = RequestMethod.GET)
+    @ResponseBody
+    public Customer getClient(@RequestBody ClientDto customer) {
+
+        return clientService.getClient(customer);
     }
     /*
         @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
