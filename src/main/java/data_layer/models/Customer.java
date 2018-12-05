@@ -43,4 +43,32 @@ public class Customer {
                 "Client[id=%d, nume='%s', prenume='%s', telefon='%s', adresa='%s', username='%s', parola='%s']",
                 id, nume, prenume, telefon, adresa, username, parola);
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNume() {
+        return nume;
+    }
+
+    public String getPrenume() {
+        return prenume;
+    }
+
+    public String getTelefon() {
+        return telefon;
+    }
+
+    public String getAdresa() {
+        return adresa;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getParola() {
+        return parola;
+    }
 }

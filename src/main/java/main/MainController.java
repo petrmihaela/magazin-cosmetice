@@ -1,6 +1,7 @@
 package main;
 
 import data_layer.dto.ClientDto;
+import data_layer.dto.LoggedClient;
 import data_layer.dto.ProductDto;
 import data_layer.exceptions.NotFoundException;
 import data_layer.models.Customer;
@@ -54,7 +55,7 @@ public class MainController {
 
     @RequestMapping(value = "/clients/login", method = RequestMethod.POST)
     @ResponseBody
-    public Customer getClient(@RequestBody ClientDto customer) throws NotFoundException {
+    public LoggedClient getClient(@RequestBody ClientDto customer) throws NotFoundException {
 
         return clientService.getClient(customer);
     }
