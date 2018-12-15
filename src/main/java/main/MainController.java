@@ -7,6 +7,7 @@ import data_layer.exceptions.NotFoundException;
 import data_layer.models.Customer;
 import data_layer.models.Imagine;
 import data_layer.models.Produs;
+import data_layer.models.Stock;
 import data_layer.services.ClientService;
 import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +60,14 @@ public class MainController {
 
         return clientService.getClient(customer);
     }
+
+    @RequestMapping(value = "/product/stocks", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Stock> getStocksForAProduct(@RequestParam(name = "produsId") int produsId) {
+       List<Stock> stocks=productService.getStocksForAProduct(produsId);
+       return stocks;
+    }
+
     /*
         @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
         @ResponseBody

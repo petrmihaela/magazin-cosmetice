@@ -20,7 +20,8 @@ public class Stock {
     @JsonProperty("cantitate")
     private int cantitate;
 
-    private int id_produs;
+    @JsonProperty("produsid")
+    private int produsid;
 
     public Stock() {
 
@@ -29,13 +30,13 @@ public class Stock {
     public Stock(String culoare, int cantitate, int id_produs) {
         this.culoare = culoare;
         this.cantitate = cantitate;
-        this.id_produs = id_produs;
+        this.produsid = id_produs;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Stock[id=%d, culoare='%s', cantitate='%s', id_produs='%s']",
-                id, culoare, cantitate, id_produs);
+                "Stock[id=%d, culoare='%s', cantitate='%s', produsId='%s']",
+                id, culoare, cantitate, produsid);
     }
 }

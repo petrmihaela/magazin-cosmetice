@@ -3,8 +3,10 @@ package data_layer.services;
 import data_layer.dto.ProductDto;
 import data_layer.models.Imagine;
 import data_layer.models.Produs;
+import data_layer.models.Stock;
 import data_layer.repositories.ImagineRepository;
 import data_layer.repositories.ProdusRepository;
+import data_layer.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ public class ProdusService {
 
     @Autowired
     ImagineRepository imagineRepository;
+
+    @Autowired
+    StockRepository stockRepository;
 
     public List<Produs> getAllProducts() {
         return produsRepository.findAll();
@@ -50,5 +55,10 @@ public class ProdusService {
 
         produseDto = fromProdusToDto(produse);
         return produseDto;
+    }
+
+    public List<Stock> getStocksForAProduct(int produsId) {
+        List<Stock> stocks = stockRepository.findByProdusidEquals(produsId);
+        return stocks;
     }
 }
