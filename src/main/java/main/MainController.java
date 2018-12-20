@@ -4,11 +4,9 @@ import data_layer.dto.ClientDto;
 import data_layer.dto.LoggedClient;
 import data_layer.dto.ProductDto;
 import data_layer.exceptions.NotFoundException;
-import data_layer.models.Customer;
-import data_layer.models.Imagine;
-import data_layer.models.Produs;
-import data_layer.models.Stock;
+import data_layer.models.*;
 import data_layer.services.ClientService;
+import data_layer.services.ComandaService;
 import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,6 +23,9 @@ public class MainController {
 
     @Autowired
     ClientService clientService;
+
+    @Autowired
+    ComandaService comandaService;
    /* @RequestMapping("/products")
     @ResponseBody
     public List<Produs> getAllProducts() {
@@ -68,6 +69,19 @@ public class MainController {
        return stocks;
     }
 
+    @RequestMapping(value = "/orders/addOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public void addOrder(@RequestBody Comanda comanda) {
+
+        comandaService.saveComanda(comanda);
+    }
+
+    @RequestMapping(value = "/orders/addProdCom", method = RequestMethod.POST)
+    @ResponseBody
+    public void addProdCom(@RequestBody ProdCom prodCom) {
+
+        comandaService.saveProdCom(prodCom);
+    }
     /*
         @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
         @ResponseBody

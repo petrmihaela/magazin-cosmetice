@@ -21,6 +21,7 @@ public class Comanda {
     @JsonProperty("dataComanda")
     private Date dataComanda;
 
+    @JsonProperty("id_client")
     private int id_client;
 
     public Comanda(){
