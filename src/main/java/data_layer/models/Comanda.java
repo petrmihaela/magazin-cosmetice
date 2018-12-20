@@ -18,7 +18,7 @@ public class Comanda {
     private int pret_total;
 
     @JsonProperty("data_comanda")
-    private Date data_comanda;
+    private String data_comanda;
 
     @JsonProperty("id_client")
     private int id_client;
@@ -27,7 +27,7 @@ public class Comanda {
 
     }
 
-    public Comanda(int pret_total, Date dataComanda, int id_client) {
+    public Comanda(int pret_total, String dataComanda, int id_client) {
         this.pret_total = pret_total;
         this.data_comanda = dataComanda;
         this.id_client = id_client;
