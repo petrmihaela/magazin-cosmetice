@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class LoggedClient {
 
+    @JsonProperty("id")
+    private int id;
     @JsonProperty("nume")
     private String nume;
     @JsonProperty("prenume")
@@ -17,7 +19,8 @@ public class LoggedClient {
 
     }
 
-    public LoggedClient(String nume, String prenume, String telefon, String adresa) {
+    public LoggedClient(int id, String nume, String prenume, String telefon, String adresa) {
+        this.id = id;
         this.nume = nume;
         this.prenume = prenume;
         this.telefon = telefon;
@@ -27,7 +30,7 @@ public class LoggedClient {
     @Override
     public String toString() {
         return String.format(
-                "Client[ nume='%s', prenume='%s', telefon='%s', adresa='%s']",
-                nume, prenume, telefon, adresa);
+                "Client[ id='%d', nume='%s', prenume='%s', telefon='%s', adresa='%s']",
+                id, nume, prenume, telefon, adresa);
     }
 }

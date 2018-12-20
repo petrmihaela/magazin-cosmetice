@@ -24,7 +24,7 @@ public class ClientService {
             throw new NotFoundException("Username or password is wrong!");
         }
 
-        LoggedClient loggedClient=new LoggedClient(customer.getNume(),customer.getPrenume(),customer.getTelefon(),customer.getAdresa());
+        LoggedClient loggedClient=new LoggedClient(customer.getId(),customer.getNume(),customer.getPrenume(),customer.getTelefon(),customer.getAdresa());
         return loggedClient;
     }
 }
