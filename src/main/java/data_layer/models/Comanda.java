@@ -3,7 +3,8 @@ package data_layer.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "comanda")
@@ -22,7 +23,7 @@ public class Comanda {
     @JsonProperty("id_client")
     private int id_client;
 
-    public Comanda(){
+    public Comanda() {
 
     }
 
