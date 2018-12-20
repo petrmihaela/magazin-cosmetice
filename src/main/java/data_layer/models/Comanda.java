@@ -13,13 +13,11 @@ public class Comanda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "pret_total")
-    @JsonProperty("pretTotal")
-    private int pretTotal;
+    @JsonProperty("pret_total")
+    private int pret_total;
 
-    @Column(name = "data_comanda")
-    @JsonProperty("dataComanda")
-    private Date dataComanda;
+    @JsonProperty("data_comanda")
+    private Date data_comanda;
 
     @JsonProperty("id_client")
     private int id_client;
@@ -28,16 +26,16 @@ public class Comanda {
 
     }
 
-    public Comanda(int pretTotal, Date dataComanda, int id_client) {
-        this.pretTotal = pretTotal;
-        this.dataComanda = dataComanda;
+    public Comanda(int pret_total, Date dataComanda, int id_client) {
+        this.pret_total = pret_total;
+        this.data_comanda = dataComanda;
         this.id_client = id_client;
     }
 
     @Override
     public String toString() {
         return String.format(
-                "Comanda[id=%d, pret='%s', data='%s', id_client='%s']",
-                id, pretTotal, dataComanda, id_client);
+                "Comanda[id=%d, pret='%d', data='%s', id_client='%d']",
+                id, pret_total, data_comanda, id_client);
     }
 }
