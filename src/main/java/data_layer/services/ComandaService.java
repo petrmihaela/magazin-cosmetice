@@ -14,8 +14,9 @@ public class ComandaService {
     @Autowired
     ProdComRepository prodComRepository;
 
-    public void saveComanda(Comanda c) {
-        comandaRepository.save(c);
+    public int saveComanda(Comanda c) {
+        Comanda added = comandaRepository.saveAndFlush(c);
+        return added.getId();
     }
 
     public void saveProdCom(ProdCom c) {

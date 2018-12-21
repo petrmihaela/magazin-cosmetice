@@ -71,9 +71,10 @@ public class MainController {
 
     @RequestMapping(value = "/orders/addOrder", method = RequestMethod.POST)
     @ResponseBody
-    public void addOrder(@RequestBody Comanda comanda) {
+    public int addOrder(@RequestBody Comanda comanda) {
 
-        comandaService.saveComanda(comanda);
+        return comandaService.saveComanda(comanda);
+
     }
 
     @RequestMapping(value = "/orders/addProdCom", method = RequestMethod.POST)

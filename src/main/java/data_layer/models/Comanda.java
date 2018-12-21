@@ -39,4 +39,8 @@ public class Comanda {
                 "Comanda[id=%d, pret='%d', data='%s', id_client='%d']",
                 id, pret_total, data_comanda, id_client);
     }
+
+    public int getId() {
+        return id;
+    }
 }
