@@ -13,4 +13,8 @@ public interface StockRepository extends JpaRepository<Stock, Integer> {
 
     List<Stock> findByProdusidEquals(int id);
 
+    @Modifying
+    @Query("update Stock s set s.cantitate = ?1 where s.id = ?2")
+    void updateCantitate(int cantitate, int id);
+
 }

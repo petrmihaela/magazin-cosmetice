@@ -61,4 +61,9 @@ public class ProdusService {
         List<Stock> stocks = stockRepository.findByProdusidEquals(produsId);
         return stocks;
     }
+
+
+    public void updateStock(int id, int cantitate) {
+        stockRepository.updateCantitate(cantitate, id);
+    }
 }

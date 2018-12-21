@@ -11,6 +11,7 @@ import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,8 +66,8 @@ public class MainController {
     @RequestMapping(value = "/product/stocks", method = RequestMethod.GET)
     @ResponseBody
     public List<Stock> getStocksForAProduct(@RequestParam(name = "produsId") int produsId) {
-       List<Stock> stocks=productService.getStocksForAProduct(produsId);
-       return stocks;
+        List<Stock> stocks = productService.getStocksForAProduct(produsId);
+        return stocks;
     }
 
     @RequestMapping(value = "/orders/addOrder", method = RequestMethod.POST)
@@ -83,6 +84,14 @@ public class MainController {
 
         comandaService.saveProdCom(prodCom);
     }
+
+    @RequestMapping(value = "/stocks/updateStock", method = RequestMethod.GET)
+    @ResponseBody
+    @Transactional
+    public void updateStock(@RequestParam(name = "idStock") int idStock, @RequestParam(name = "cantitate") int cantitate) {
+        productService.updateStock(idStock, cantitate);
+    }
+
     /*
         @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
         @ResponseBody
