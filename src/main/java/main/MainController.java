@@ -2,17 +2,17 @@ package main;
 
 import data_layer.dto.ClientDto;
 import data_layer.dto.LoggedClient;
+import data_layer.dto.OrderDto;
 import data_layer.dto.ProductDto;
 import data_layer.exceptions.NotFoundException;
 import data_layer.models.*;
 import data_layer.services.ClientService;
-import data_layer.services.ComandaService;
+import data_layer.services.OrderService;
 import data_layer.services.ProdusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -26,7 +26,7 @@ public class MainController {
     ClientService clientService;
 
     @Autowired
-    ComandaService comandaService;
+    OrderService orderService;
    /* @RequestMapping("/products")
     @ResponseBody
     public List<Produs> getAllProducts() {
@@ -72,9 +72,9 @@ public class MainController {
 
     @RequestMapping(value = "/orders/addOrder", method = RequestMethod.POST)
     @ResponseBody
-    public int addOrder(@RequestBody Comanda comanda) {
+    public boolean addOrder(@RequestBody OrderDto order) {
 
-        return comandaService.saveComanda(comanda);
+        return orderService.saveOrder(order);
 
     }
 
@@ -82,7 +82,7 @@ public class MainController {
     @ResponseBody
     public void addProdCom(@RequestBody ProdCom prodCom) {
 
-        comandaService.saveProdCom(prodCom);
+        orderService.saveProdCom(prodCom);
     }
 
     @RequestMapping(value = "/stocks/updateStock", method = RequestMethod.GET)

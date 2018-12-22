@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Entity
 @Table(name = "comanda")
-public class Comanda {
+public class MyOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,11 +23,11 @@ public class Comanda {
     @JsonProperty("id_client")
     private int id_client;
 
-    public Comanda() {
+    public MyOrder() {
 
     }
 
-    public Comanda(int pret_total, String dataComanda, int id_client) {
+    public MyOrder(int pret_total, String dataComanda, int id_client) {
         this.pret_total = pret_total;
         this.data_comanda = dataComanda;
         this.id_client = id_client;
@@ -36,7 +36,7 @@ public class Comanda {
     @Override
     public String toString() {
         return String.format(
-                "Comanda[id=%d, pret='%d', data='%s', id_client='%d']",
+                "MyOrder[id=%d, pret='%d', data='%s', id_client='%d']",
                 id, pret_total, data_comanda, id_client);
     }
 

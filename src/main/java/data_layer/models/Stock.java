@@ -34,10 +34,33 @@ public class Stock {
         this.produsid = id_produs;
     }
 
+    public Stock(int id, String culoare, int cantitate, int id_produs) {
+        this.id = id;
+        this.culoare = culoare;
+        this.cantitate = cantitate;
+        this.produsid = id_produs;
+    }
+
     @Override
     public String toString() {
         return String.format(
                 "Stock[id=%d, culoare='%s', cantitate='%s', produsId='%s']",
                 id, culoare, cantitate, produsid);
+    }
+
+    public String getCuloare() {
+        return culoare;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getCantitate() {
+        return cantitate;
+    }
+
+    public int getProdusid() {
+        return produsid;
     }
 }
