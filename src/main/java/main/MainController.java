@@ -72,10 +72,9 @@ public class MainController {
 
     @RequestMapping(value = "/orders/addOrder", method = RequestMethod.POST)
     @ResponseBody
+    @Transactional
     public boolean addOrder(@RequestBody OrderDto order) {
-
         return orderService.saveOrder(order);
-
     }
 
     @RequestMapping(value = "/orders/addProdCom", method = RequestMethod.POST)
