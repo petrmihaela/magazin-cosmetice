@@ -12,6 +12,7 @@ public class Stock {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty("id")
     private int id;
 
     @JsonProperty("culoare")
