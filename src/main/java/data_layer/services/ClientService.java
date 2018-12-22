@@ -14,8 +14,9 @@ public class ClientService {
     @Autowired
     ClientRepository clientRepository;
 
-    public void saveClient(Customer c) {
-        clientRepository.save(c);
+    public int saveClient(Customer c) {
+        Customer added = clientRepository.saveAndFlush(c);
+        return added.getId();
     }
 
     public LoggedClient getClient(ClientDto clientDto) throws NotFoundException {

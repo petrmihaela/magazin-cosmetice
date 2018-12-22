@@ -51,9 +51,9 @@ public class MainController {
 
     @RequestMapping(value = "/clients/addClient", method = RequestMethod.POST)
     @ResponseBody
-    public void registerCustomer(@RequestBody Customer customer) {
+    public int registerCustomer(@RequestBody Customer customer) {
 
-        clientService.saveClient(customer);
+        return clientService.saveClient(customer);
     }
 
     @RequestMapping(value = "/clients/login", method = RequestMethod.POST)
