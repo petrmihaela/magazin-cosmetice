@@ -73,22 +73,8 @@ public class MainController {
     @RequestMapping(value = "/orders/addOrder", method = RequestMethod.POST)
     @ResponseBody
     @Transactional
-    public boolean addOrder(@RequestBody OrderDto order) {
+    public String addOrder(@RequestBody OrderDto order) {
         return orderService.saveOrder(order);
-    }
-
-    @RequestMapping(value = "/orders/addProdCom", method = RequestMethod.POST)
-    @ResponseBody
-    public void addProdCom(@RequestBody ProdCom prodCom) {
-
-        orderService.saveProdCom(prodCom);
-    }
-
-    @RequestMapping(value = "/stocks/updateStock", method = RequestMethod.GET)
-    @ResponseBody
-    @Transactional
-    public void updateStock(@RequestParam(name = "idStock") int idStock, @RequestParam(name = "cantitate") int cantitate) {
-        productService.updateStock(idStock, cantitate);
     }
 
     /*
