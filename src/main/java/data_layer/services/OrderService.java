@@ -2,10 +2,8 @@ package data_layer.services;
 
 import data_layer.dto.OrderDto;
 import data_layer.dto.OrderedProduct;
-import data_layer.exceptions.OrderException;
 import data_layer.models.MyOrder;
 import data_layer.models.ProdCom;
-import data_layer.models.Produs;
 import data_layer.models.Stock;
 import data_layer.repositories.OrderRepository;
 import data_layer.repositories.ProdComRepository;
@@ -14,8 +12,11 @@ import data_layer.repositories.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class OrderService {
@@ -61,7 +62,9 @@ public class OrderService {
     private String getCurrentDate() {
         long millis = System.currentTimeMillis();
         java.sql.Date date = new java.sql.Date(millis);
-        return date.toString();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MMM-dd");
+        String strDate = formatter.format(date);
+        return strDate;
     }
 
     private void addProdCom(int orderId, List<OrderedProduct> products) {
@@ -101,6 +104,25 @@ public class OrderService {
         }
         //throw new OrderException("Cosul este gol!");
         return "Cosul este gol!";
+    }
+
+    public Map<String, Integer> countOrdersForEveryMonth() {
+
+        Map<String, Integer> numberOfOrders = new HashMap<>();
+        numberOfOrders.put("Jan", orderRepository.countByDatacomandaContaining("Jan"));
+        numberOfOrders.put("Feb", orderRepository.countByDatacomandaContaining("Feb"));
+        numberOfOrders.put("Mar", orderRepository.countByDatacomandaContaining("Mar"));
+        numberOfOrders.put("Apr", orderRepository.countByDatacomandaContaining("Apr"));
+        numberOfOrders.put("May", orderRepository.countByDatacomandaContaining("May"));
+        numberOfOrders.put("Jun", orderRepository.countByDatacomandaContaining("Jun"));
+        numberOfOrders.put("Jul", orderRepository.countByDatacomandaContaining("Jul"));
+        numberOfOrders.put("Aug", orderRepository.countByDatacomandaContaining("Aug"));
+        numberOfOrders.put("Sep", orderRepository.countByDatacomandaContaining("Sep"));
+        numberOfOrders.put("Oct", orderRepository.countByDatacomandaContaining("Oct"));
+        numberOfOrders.put("Nov", orderRepository.countByDatacomandaContaining("Nov"));
+        numberOfOrders.put("Dec", orderRepository.countByDatacomandaContaining("Dec"));
+
+        return numberOfOrders;
     }
 
 }

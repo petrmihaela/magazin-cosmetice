@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -75,6 +76,13 @@ public class MainController {
     @Transactional
     public String addOrder(@RequestBody OrderDto order) {
         return orderService.saveOrder(order);
+    }
+
+    @RequestMapping(value = "/orders/perMonth", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Integer> getOrdersForEveryMonth() {
+
+        return orderService.countOrdersForEveryMonth();
     }
 
     /*

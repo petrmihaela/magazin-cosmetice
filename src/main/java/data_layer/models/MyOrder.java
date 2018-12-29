@@ -17,8 +17,8 @@ public class MyOrder {
     @JsonProperty("pret_total")
     private int pret_total;
 
-    @JsonProperty("data_comanda")
-    private String data_comanda;
+    @JsonProperty("datacomanda")
+    private String datacomanda;
 
     @JsonProperty("id_client")
     private int id_client;
@@ -29,7 +29,7 @@ public class MyOrder {
 
     public MyOrder(int pret_total, String dataComanda, int id_client) {
         this.pret_total = pret_total;
-        this.data_comanda = dataComanda;
+        this.datacomanda = dataComanda;
         this.id_client = id_client;
     }
 
@@ -37,7 +37,7 @@ public class MyOrder {
     public String toString() {
         return String.format(
                 "MyOrder[id=%d, pret='%d', data='%s', id_client='%d']",
-                id, pret_total, data_comanda, id_client);
+                id, pret_total, datacomanda, id_client);
     }
 
     public int getId() {
