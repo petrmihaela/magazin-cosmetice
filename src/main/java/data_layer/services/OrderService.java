@@ -84,7 +84,8 @@ public class OrderService {
 
                 if (colorStock.getCantitate() < p.getQuantity()) {
                     String productName = productRepository.getNameOfProduct(p.getIdProduct());
-                    throw new OrderException("Stock insuficient pentru produsul " + productName);
+                    //throw new OrderException("Stock insuficient pentru produsul " + productName);
+                    return "Stock insuficient pentru produsul " + productName;
                 }
             }
 
@@ -98,7 +99,8 @@ public class OrderService {
 
             return "Comanda plasata cu succes!";
         }
-        return "Niciun produs in cos!";
+        //throw new OrderException("Cosul este gol!");
+        return "Cosul este gol!";
     }
 
 }
