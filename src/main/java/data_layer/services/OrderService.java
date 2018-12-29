@@ -73,29 +73,32 @@ public class OrderService {
 
     public String saveOrder(OrderDto orderDto) {
         List<OrderedProduct> orderedProducts = orderDto.getProducts();
-        List<Stock> colorStocks = new ArrayList<>();
+        if (orderedProducts.size() > 0) {
+            List<Stock> colorStocks = new ArrayList<>();
 
-        for (OrderedProduct p : orderedProducts) {
+            for (OrderedProduct p : orderedProducts) {
 
-            List<Stock> stocks = stockRepository.findByProdusidEquals(p.getIdProduct());
-            Stock colorStock = getColorStock(p.getColor(), stocks);
-            colorStocks.add(new Stock(colorStock.getId(), colorStock.getCuloare(), colorStock.getCantitate() - p.getQuantity(), colorStock.getProdusid()));
+                List<Stock> stocks = stockRepository.findByProdusidEquals(p.getIdProduct());
+                Stock colorStock = getColorStock(p.getColor(), stocks);
+                colorStocks.add(new Stock(colorStock.getId(), colorStock.getCuloare(), colorStock.getCantitate() - p.getQuantity(), colorStock.getProdusid()));
 
-            if (colorStock.getCantitate() < p.getQuantity()) {
-                String productName = productRepository.getNameOfProduct(p.getIdProduct());
-                throw new OrderException("Stock insuficient pentru produsul " + productName);
+                if (colorStock.getCantitate() < p.getQuantity()) {
+                    String productName = productRepository.getNameOfProduct(p.getIdProduct());
+                    throw new OrderException("Stock insuficient pentru produsul " + productName);
+                }
             }
+
+            for (Stock s : colorStocks)
+                updateStock(s, s.getCantitate());
+
+            MyOrder newOrder = new MyOrder(computeTotalPrice(orderedProducts), getCurrentDate(), orderDto.getIdClient());
+            MyOrder added = orderRepository.saveAndFlush(newOrder);
+
+            addProdCom(added.getId(), orderedProducts);
+
+            return "Comanda plasata cu succes!";
         }
-
-        for (Stock s : colorStocks)
-            updateStock(s, s.getCantitate());
-
-        MyOrder newOrder = new MyOrder(computeTotalPrice(orderedProducts), getCurrentDate(), orderDto.getIdClient());
-        MyOrder added = orderRepository.saveAndFlush(newOrder);
-
-        addProdCom(added.getId(), orderedProducts);
-
-        return "Comanda plasata cu succes!";
+        return "Niciun produs in cos!";
     }
 
 }
