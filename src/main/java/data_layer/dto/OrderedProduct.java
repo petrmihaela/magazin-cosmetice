@@ -7,9 +7,10 @@ public class OrderedProduct {
     private int quantity;
     private int price;
 
-    public OrderedProduct(){
+    public OrderedProduct() {
 
     }
+
     public OrderedProduct(int idProduct, String color, int quantity, int price) {
         this.idProduct = idProduct;
         this.color = color;

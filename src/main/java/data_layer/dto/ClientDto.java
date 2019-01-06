@@ -11,7 +11,7 @@ public class ClientDto {
     @JsonProperty("parola")
     private String parola;
 
-    public ClientDto(){
+    public ClientDto() {
 
     }
 

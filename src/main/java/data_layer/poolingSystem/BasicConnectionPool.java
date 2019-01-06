@@ -29,7 +29,7 @@ public class BasicConnectionPool implements ConnectionPool {
     }
 
     // standard constructors
-    private BasicConnectionPool(String url, String user, String password, List<Connection> connectionPool){
+    private BasicConnectionPool(String url, String user, String password, List<Connection> connectionPool) {
         this.url = url;
         this.user = user;
         this.password = password;
@@ -79,9 +79,10 @@ public class BasicConnectionPool implements ConnectionPool {
         return connectionPool.size() + usedConnections.size();
     }
 
-    public String getPassword(){
+    public String getPassword() {
         return this.password;
     }
+
     // standard getters
     public void shutdown() throws SQLException {
         usedConnections.forEach(this::releaseConnection);

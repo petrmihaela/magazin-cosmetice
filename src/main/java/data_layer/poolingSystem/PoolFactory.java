@@ -15,7 +15,7 @@ public class PoolFactory {
             case "CONNECTION_POOL":
                 try {
                     return BasicConnectionPool.create(url, username, password);
-                } catch (SQLException e){
+                } catch (SQLException e) {
                     System.out.println("Could not create connections!");
                 }
             default:

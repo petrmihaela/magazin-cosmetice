@@ -9,7 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface OrderRepository extends JpaRepository<MyOrder, Integer> {
 
-  //  @Modifying
-//    @Query("select count(id) from MyOrder o where o.data_comanda like '%?1%'")
     int countByDatacomandaContaining(String month);
 }

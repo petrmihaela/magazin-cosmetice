@@ -14,12 +14,12 @@ public class ProductDto {
 
     }
 
-    public ProductDto(int id,String nume, int pret, String descriere,List<String> url) {
-        this.id=id;
+    public ProductDto(int id, String nume, int pret, String descriere, List<String> url) {
+        this.id = id;
         this.nume = nume;
         this.pret = pret;
         this.descriere = descriere;
-        this.url=url;
+        this.url = url;
     }
 
     public int getId() {

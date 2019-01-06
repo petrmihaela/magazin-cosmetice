@@ -18,7 +18,7 @@ public class Produs {
     @JsonProperty("descriere")
     private String descriere;
 
-    public Produs(){
+    public Produs() {
 
     }
 

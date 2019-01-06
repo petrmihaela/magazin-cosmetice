@@ -28,14 +28,6 @@ public class MainController {
 
     @Autowired
     OrderService orderService;
-   /* @RequestMapping("/products")
-    @ResponseBody
-    public List<Produs> getAllProducts() {
-
-        List<Produs> products = productService.getAllProducts();
-        return products;
-
-    }*/
 
     @RequestMapping(value = "/products/category", method = RequestMethod.GET)
     @ResponseBody
@@ -85,28 +77,6 @@ public class MainController {
         return orderService.countOrdersForEveryMonth();
     }
 
-    /*
-        @RequestMapping(value = "/movies/addMovie", method = RequestMethod.POST)
-        @ResponseBody
-        public void set(@RequestBody Movie movie) {
-
-            movieService.saveMovie(movie);
-        }
-
-        @RequestMapping(value = "/movies/deleteMovie", method = RequestMethod.DELETE)
-        @ResponseBody
-        @Transactional
-        public void deleteMovieWithId(@RequestBody long id) {
-            movieService.deleteMovieById(id);
-        }
-
-        @RequestMapping(value = "/movies/updateMovie", method = RequestMethod.PUT)
-        @ResponseBody
-        @Transactional
-        public void updateMovie(@RequestBody MovieUpdateDTO movie) {
-            movieService.updateMovie(movie);
-        }
-    */
     @RequestMapping(value = "/")
     @ResponseBody
     public String index() {
