@@ -88,7 +88,8 @@ public class OrderService {
                 if (colorStock.getCantitate() < p.getQuantity()) {
                     String productName = productRepository.getNameOfProduct(p.getIdProduct());
                     //throw new OrderException("Stock insuficient pentru produsul " + productName);
-                    return "Stock insuficient pentru produsul " + productName;
+                    String response = "Stock insuficient pentru produsul " + productName + "!";
+                    return response;
                 }
             }
 
@@ -99,11 +100,12 @@ public class OrderService {
             MyOrder added = orderRepository.saveAndFlush(newOrder);
 
             addProdCom(added.getId(), orderedProducts);
-
-            return "Comanda plasata cu succes!";
+            String response = "Comanda plasata cu succes!";
+            return response;
         }
         //throw new OrderException("Cosul este gol!");
-        return "Cosul este gol!";
+        String response = "Cosul este gol!";
+        return response;
     }
 
     public Map<String, Integer> countOrdersForEveryMonth() {
